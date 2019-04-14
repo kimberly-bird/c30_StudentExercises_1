@@ -24,6 +24,12 @@ namespace studentEx1
             
         }
 
+        public string FullName {
+            get {
+                return FirstName + " " + LastName;
+            }
+        }
+
         // Assign an exercise to a student
 
 

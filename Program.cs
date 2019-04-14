@@ -12,19 +12,27 @@ namespace studentEx1
                 Name = "Cohort 30"
             };
 
-            Cohort cohort22 = new Cohort("Cohort 22");
+            Cohort cohort29 = new Cohort("Cohort 29");
 
             Cohort cohort28 = new Cohort();
             cohort28.Name = "Cohort 28";
 
             // create some instructors
-            Instructor Steve = new Instructor("Steve", "Brownlee", "@coach", cohort30);
+            // notice how I have the cohort as the variable name of a cohort, because that is the whole instance of a cohort
+            Instructor Steve = new Instructor() {
+                FirstName = "Steve", 
+                LastName = "Brownlee", 
+                SlackHandle = "@coach", 
+                Cohort = cohort30
+            };
 
             Instructor Joe = new Instructor("Joe", "Shep", "@joes", cohort28);
 
-            Instructor Meg = new Instructor("Meg", "Ducharme", "megs", cohort22);
+            Instructor Jenna = new Instructor("Jenna", "Solis", "jenna", cohort30);
 
             Instructor Kimmy = new Instructor("Kimmy", "Bird", "kimmy", cohort30);
+
+            Instructor Andy = new Instructor("Andy", "Collins", "Andy", cohort29);
 
             // create some exercises
             Exercise OverlyExcited = new Exercise("Overly Excited", "Javascript");
@@ -43,12 +51,13 @@ namespace studentEx1
 
             // list out all of the cohorts
             List<Cohort> AllCohorts = new List<Cohort>() {
-                cohort22,
-                cohort22,
+                cohort28,
+                cohort29,
                 cohort30
             };
 
-            AllCohorts.ForEach(c => Console.WriteLine($"{c.Name}"));
+            // I don't need to do dot notation for the name of the Cohort, because I have that as the default string to be returned because of the ToString() override method in my Cohort class.
+            AllCohorts.ForEach(c => Console.WriteLine($"{c}"));
 
             // list out all of the exercises
             List<Exercise> AllExercises = new List<Exercise>() {
@@ -58,17 +67,21 @@ namespace studentEx1
                 Chinook
             };
 
-            AllExercises.ForEach(ex => Console.WriteLine($"{ex.Name}: {ex.Language}"));
+            // I don't need to do dot notation for the name of the exercise, because I have that as the default string to be returned because of the ToString() override method in my Exercise class. Language, however, is not in that method override, so I do need dot notation.
+            AllExercises.ForEach(ex => Console.WriteLine($"{ex}: {ex.Language}"));
 
             // list out all of the instructors
             List<Instructor> AllInstructors = new List<Instructor>() {
                 Steve,
                 Joe,
-                Meg,
-                Kimmy
+                Jenna,
+                Kimmy,
+                Andy
             };
 
-            AllInstructors.ForEach(i => Console.WriteLine($"{i.FirstName} {i.LastName} is the instructor for {i.Cohort.Name}"));
+            // I have a getter property on my Instructor that returns the full name of an instructor, so I don't have to worry about typing out {i.FirstName} {i.LastName}
+            // notice how we can access the name of the cohort through dot notation - we can do this because we have set the whole instance of the cohort on the instructor as a foreign key.
+            AllInstructors.ForEach(i => Console.WriteLine($"{i.FullName} is the instructor for {i.Cohort.Name}"));
         }
     }
 }
