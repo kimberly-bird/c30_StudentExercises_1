@@ -82,6 +82,37 @@ namespace studentEx1
             // I have a getter property on my Instructor that returns the full name of an instructor, so I don't have to worry about typing out {i.FirstName} {i.LastName}
             // notice how we can access the name of the cohort through dot notation - we can do this because we have set the whole instance of the cohort on the instructor as a foreign key.
             AllInstructors.ForEach(i => Console.WriteLine($"{i.FullName} is the instructor for {i.Cohort.Name}"));
+        
+            Student Nathan = new Student("Nathan", "Sev", "@nathan", cohort30);
+
+            Console.WriteLine(Nathan.Cohort.Name);
+            Console.WriteLine(Nathan);
+
+            Kimmy.AssignExercise(Nathan, OverlyExcited);
+            Kimmy.AssignExercise(Nathan, BagOLoot);
+
+            Console.WriteLine($"Nathan has {Nathan.Exercises.Count} exercises");
+
+            Nathan.Exercises.ForEach(ex => Console.WriteLine($"{ex.Name} {ex.Language}"));
+
+            foreach (var ex in Nathan.Exercises)
+            {
+                Console.WriteLine($"Version 2: {ex.Name} in {ex.Language}");
+            }
+
+
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

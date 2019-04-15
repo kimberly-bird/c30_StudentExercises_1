@@ -31,7 +31,21 @@ namespace studentEx1
         }
 
         // Assign an exercise to a student
+        public void AssignExercise(Student s, Exercise e)
+        {
+            // take the excerise and assign it to the student's list of exercises
+            s.Exercises.Add(e);
+        }
 
 
     }
 }
+
+
+
+
+
+
+
+
+

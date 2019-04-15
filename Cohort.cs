@@ -6,6 +6,8 @@ namespace studentEx1
     public class Cohort
     {
         public string Name { get; set; }
+
+        public DateTime StartDate {get; set; }
         // These are lists of custom types that we created - so a list of Student types and a list of Instructor types
         public List<Student> Students { get; set; } = new List<Student>();
         public List<Instructor> Instructors { get; set; } = new List<Instructor>();
